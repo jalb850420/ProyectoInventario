@@ -8,3 +8,21 @@ h1 {
 form {
     width: ;
 }
+/* Banners 125x125 */
+#banners125 {
+    margin: 10px 0;
+    width:100%;
+    }
+    #banners125 ul {
+    padding:0;
+    margin:0;
+    list-style-type:none;
+    }
+    #banners125 ul li {
+    float: left;
+    margin:10px 0 0 10px;
+    display: inline;
+    }
+    #banners125 img {
+    display: block;
+    }
