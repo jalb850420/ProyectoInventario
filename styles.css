@@ -1,28 +1,61 @@
-h1 {
-    font-family: serif;/*Tipo de fuente*/
-    background-color: aqua;
-    color: rgb(114, 100, 237);
-    text-align: center;
+body{
+    font-family: Georgia, Times, serif;
+    color: rgb(22, 21, 22);
+    font-size: 1.3rem;
+    line-height: 1.4em;
+    margin: 0;
+}
+h1{
+    font-size: 1rem;
+    line-height: 1.3em;
+}
+p{
+    margin-bottom: 1,6em;
+}
+.container{
+    width: 85%;
+    max-width: 850px;
+    margin: 0 auto;
 }
 
-form {
-    width: ;
+.header{
+    background: rgb(43, 54, 207);
+    color: white;
+    padding: 0.5rem 0;
 }
-/* Banners 125x125 */
-#banners125 {
-    margin: 10px 0;
-    width:100%;
+    .header a{
+        color: white;
+        text-decoration: none;
+        align-items: stretch;
     }
-    #banners125 ul {
-    padding:0;
-    margin:0;
-    list-style-type:none;
+
+.logo-nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    letter-spacing: 5px;
+    font-size: 1.3em;
+}
+.navigation ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+    .navigation ul li{
+        display: inline-block;
     }
-    #banners125 ul li {
-    float: left;
-    margin:10px 0 0 10px;
-    display: inline;
-    }
-    #banners125 img {
-    display: block;
-    }
+        .navigation ul li a{
+            display: block;
+            padding: 0.5rem 1rem;
+            transition: all 0.4s linear;
+            border-radius: 5px;
+        }
+            .navigation ul li a:hover {
+                background: #4a4a4a;
+            }
+
+
+
+
