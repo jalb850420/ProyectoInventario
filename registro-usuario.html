@@ -1,0 +1,88 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Proyecto inventario HTML5 - Sprint3</title>
+    <meta name="description" content="Proyecto inventario HTML5 - Sprint3">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ================================== -->
+    <!-- INICIA STYLES DEL FORMULARIO -->
+    <!-- ===================================-->    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+   
+</head>
+<body class="bg-dark">
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">                
+                <!-- ================================== -->
+                <!-- INICIA CAMPOS DE REGISTRO DE USURAIO -->
+                <!-- ===================================-->
+                <div class="login-form">
+                    <form>
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" class="form-control" placeholder="*Nombre (Obligatorio)">
+                        </div>
+                        <div class="form-group">
+                            <label>Apellidos</label>
+                            <input type="text" class="form-control" placeholder="*Apellidos (Obligatorio)">
+                        </div>
+                        <div class="form-group">
+                            <label>Correo electrónico</label>
+                            <input type="email" class="form-control" placeholder="*Correo electrónico (Obligatorio)">
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre de Usuario</label>
+                            <input type="text" class="form-control" placeholder="*Nombre de Usuario (Obligatorio)">
+                        </div>
+                        <button type="text" class="btn btn-secundary btn-flat m-b-30 m-t-30">Generar Contraseña</button>                        
+                        <div class="form-group">
+                            <label> </label>
+                            <input type="contraseña" class="form-control" placeholder="Contraseña">
+                        </div>
+                            <!-- ================================== -->
+                            <!-- INICIA BOTON SELECT -->
+                            <!-- ===================================-->    
+                        
+                        <div class="form-group">
+                            <label class="control-label">Perfil</label>
+                            <select class="form-control custom-select" data-placeholder="Seleccione un tipo de Usuario" >
+                                <option value="Seleccione un tipo de Usuario">Seleccione un tipo de Usuario</option>
+                                <option value="Administrador Principal">Administrador Principal</option>
+                                <option value="Administrador">Administrador</option>
+                                <option value="Usuario Final">Usuario Final</option>
+                            </select>
+                            <!-- ================================== -->
+                            <!-- FINALIZA BOTON SELECT -->
+                            <!-- ===================================-->
+                        </div>
+                            <i></i> <!-- DA CONTINUIDAD AL CUERPO DEL FORMULARIO -->
+                        
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Enviar al usuario nuevo un correo electrónico con infomación de su cuenta
+                            </label>
+                        </div>                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Guardar</button>
+                            <button type="button" class="btn btn-inverse">Cancelar</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+
+</body>
+</html>
