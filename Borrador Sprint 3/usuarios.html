@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <link href="style.css" rel="stylesheet">
-   
+       
     <!-- ==========================================--> 
     <!-- FONST PERSONALIZDAS PARA ESTA PLANTILLA -->
     <!-- ==========================================--> 
@@ -129,33 +129,112 @@
 
                     <!-- TÍTULO DE LA PÁGINA - Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Usuarios</h1> 
+                    
+                        
 
                     <!-- DataTales Example -->
+                    <div class="content">
+                        <div class="animated">   
+                            
+                    <!-- ========================================================--> 
+                    <!-- INICIA MODAL  -->
+                    <!-- ========================================================-->
+                        
+
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <div class="mb-4"></div>                        
-                            <a href="#" class="btn btn-primary btn-icon-split btn-sm">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-flag"></i>
-                                </span>
-                                <span class="text">Agregar Ususario</span>
-                            </a>     
+                            <div class="mb-4"></div>     
+
+                            <!-- Button trigger modal -->                 
+                            <button type="button" class="btn btn-primary mb-0"" data-toggle="modal" data-target="#mediumModal">
+                               + Agregar Usuario
+                            </button>  
+
+                            <button type="button" class="btn btn-primary mb-0" data-toggle="modal" data-target="#largeModal">
+                                Editar Usuario
+                            </button>
+
+                            <button type="button" class="btn btn-primary mb-0" data-toggle="modal" data-target="#Modal">
+                                Eliminar Usuario
+                            </button>
+
+                            <div class="modal fade" id="mediumModal" tabindex="-1" role="form" aria-labelledby="mediumModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="mediumModalLabel"> + Agregar Usuario</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">                                            
+                                            <div class="form-group">
+                                                Nombre
+                                                <input type="text" class="form-control" placeholder="*Nombre (Obligatorio)">
+                                            </div>
+                                            <div class="form-group">
+                                                Correo electrónico
+                                                <input type="email" class="form-control" placeholder="*Correo electrónico (Obligatorio)">
+                                            </div>
+                                            <div class="form-group">
+                                               Usuario
+                                                <input type="text" class="form-control" placeholder="*Nombre de Usuario (Obligatorio)">
+                                            </div>
+                                            <div class="form-group">
+                                                Perfil
+                                                <input type="text" class="form-control" placeholder="*Perfil (Obligatorio)">
+                                            </div>                                            
+                                                                                   
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
                             
-                            <a href="#" class="btn btn-primary btn-icon-split btn-sm">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-flag"></i>
-                                </span>
-                                <span class="text">Editar Usuario</span>
-                            </a>
+
+                            <div class="modal fade" id="largeModal" tabindex="-1" role="form" aria-labelledby="largeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="largeModalLabel">Editar Usuario</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                Nombre
+                                                <input type="text" class="form-control" placeholder="Nombre">
+                                            </div>
+                                            <div class="form-group">
+                                                Correo electrónico
+                                                <input type="text" class="form-control" placeholder="Correo electrónico">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                Usuario
+                                                <input type="text" class="form-control" placeholder="Nombre de Usuario">
+                                            </div>
+                                            <div class="form-group">
+                                                Perfil
+                                                <input type="text" class="form-control" placeholder="Perfil">
+                                            </div>
+                                                           
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                       
                             
-                            <a href="#" class="btn btn-primary btn-icon-split btn-sm">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-flag"></i>
-                                </span>
-                                <span class="text">Eliminar Producto</span>
-                            </a>
 
                         </div>
+                        
                         <!-- ========================================================--> 
                         <!-- INICIA TÍTULOS DE LA TABLA -->
                         <!-- ========================================================-->
@@ -169,10 +248,11 @@
                                         <tr>
                                             <th>ID Usuario</th>                                            
                                             <th>Nombre</th>
-                                            <th>Correo electónico</th>
-                                            <th>Nombre de usuario</th>
+                                            <th>Correo electrónico</th>
+                                            <th>Usuario/th>
                                             <th>Perfil</th>
-                                            <th>Entradas</th>                                            
+                                            <th>Entrada</th>
+                                                                                   
                                         </tr>
                                     </thead>
                                     <!-- FIN TÍTULOS  (SUPERIOR) DE LA TABLA -->
@@ -185,10 +265,11 @@
                                         <tr>
                                             <th>ID Usuario</th>                                            
                                             <th>Nombre</th>
-                                            <th>Correo electónico</th>
-                                            <th>Nombre de usuario</th>
+                                            <th>Correo electrónico</th>
+                                            <th>Usuario/th>
                                             <th>Perfil</th>
-                                            <th>Entradas</th>                                            
+                                            <th>Entrada</th>
+                                                                                   
                                         </tr>
                                     </tfoot>
                                     <!-- ========================================================-->
@@ -240,8 +321,7 @@
                                             <td>Jgomez</td>
                                             <td>Usuario Final</td>
                                             <td>47</td>    
-                                        </tr>
-                                        
+                                        </tr>                   
                                     </tbody>
                                     <!-- ========================================================-->
                                     <!-- INICIA CONTENIDO DE LA TABLA -->
@@ -334,6 +414,7 @@
     
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
 
 </body>
 </html>
