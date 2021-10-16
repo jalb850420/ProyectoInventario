@@ -26,7 +26,7 @@ listaprov = {
 def Home():
     return render_template('home.html')
 
-@App.route('/', methods=["GET"])
+@App.route('/Inicio', methods=["GET"])
 def Inicio():
     return render_template('inicio.html')
 
@@ -41,7 +41,6 @@ def Productos():
 @App.route('/Proveedores', methods=["GET"])
 def Proveedores():
     return render_template('proveedores.html')
-
 @App.route('/Productos/<idproducto>', methods=["GET"])
 def infoproduct(idproducto):
     try:
