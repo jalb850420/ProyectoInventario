@@ -26,7 +26,7 @@ listaprov = {
 def Home():
     return render_template('home.html')
 
-@App.route('/Inicio', methods=["GET"])
+@App.route('/Inicio', methods=["GET","POST"])
 def Inicio():
     return render_template('inicio.html')
 
