@@ -133,29 +133,123 @@
                         
 
                     <!-- DataTales Example -->
+                    <div class="content">
+                        <div class="animated">   
+                            
+                    <!-- ========================================================--> 
+                    <!-- INICIA MODAL  -->
+                    <!-- ========================================================-->
+                        
+
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <div class="mb-4"></div>                        
-                            <a href="#" class="btn btn-primary btn-icon-split btn-sm">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-flag"></i>
-                                </span>
-                                <span class="text">Agregar Producto</span>
-                            </a>
+                            <div class="mb-4"></div>     
 
-                            <a href="#" class="btn btn-primary btn-icon-split btn-sm">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-flag"></i>
-                                </span>
-                                <span class="text">Editar Producto</span>
-                            </a>
+                            <!-- Button trigger modal -->                 
+                            <button type="button" class="btn btn-primary mb-0"" data-toggle="modal" data-target="#mediumModal">
+                               + Agregar Producto
+                            </button>  
+
+                            <button type="button" class="btn btn-primary mb-0" data-toggle="modal" data-target="#largeModal">
+                                Editar Producto
+                            </button>
+
+                            <button type="button" class="btn btn-primary mb-0" data-toggle="modal" data-target="#Modal">
+                                Eliminar Producto
+                            </button>
+
+                            <div class="modal fade" id="mediumModal" tabindex="-1" role="form" aria-labelledby="mediumModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="mediumModalLabel"> + Agregar Producto</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                ID Producto
+                                                <input type="text" class="form-control" placeholder="ID Producto (Obligatorio)">
+                                            </div>
+                                            <div class="form-group">
+                                                Categoría
+                                                <input type="text" class="form-control" placeholder="*Categoría (Obligatorio)">
+                                            </div>
+                                            <div class="form-group">
+                                                Nombre de Producto
+                                                <input type="email" class="form-control" placeholder="*Nombre de Producto (Obligatorio)">
+                                            </div>
+                                            <div class="form-group">
+                                                Marca
+                                                <input type="text" class="form-control" placeholder="*Marca (Obligatorio)">
+                                            </div>
+                                            <div class="form-group">
+                                                Descripción
+                                                <input type="text" class="form-control" placeholder="*Descripción (Obligatorio)">
+                                            </div>
+                                            <div class="form-group">
+                                                Costo del Producto
+                                                <input type="text" class="form-control" placeholder="*Costo del Producto (Obligatorio)">
+                                            </div>
+                                            <div class="form-group">
+                                                Precio Público
+                                                <input type="text" class="form-control" placeholder="*Precio Público (Obligatorio)">
+                                            </div>                                        
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
                             
-                            <a href="#" class="btn btn-primary btn-icon-split btn-sm">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-flag"></i>
-                                </span>
-                                <span class="text">Eliminar Producto</span>
-                            </a>
+
+                            <div class="modal fade" id="largeModal" tabindex="-1" role="form" aria-labelledby="largeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="largeModalLabel">Editar Producto</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                Nombre de Producto
+                                                <input type="text" class="form-control" placeholder="Nombre de Producto (Obligatorio)">
+                                            </div>
+                                            <div class="form-group">
+                                                ID - (Default)
+                                                <input type="text" class="form-control" placeholder="*Default)">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                Marca
+                                                <input type="text" class="form-control" placeholder="*Marca (Obligatorio)">
+                                            </div>
+                                            <div class="form-group">
+                                                Descripción
+                                                <input type="text" class="form-control" placeholder="*Descripción (Obligatorio)">
+                                            </div>
+                                            <div class="form-group">
+                                                Costo del Producto
+                                                <input type="text" class="form-control" placeholder="*Costo del Producto (Obligatorio)">
+                                            </div>
+                                            <div class="form-group">
+                                                Precio Público
+                                                <input type="text" class="form-control" placeholder="*Precio Público (Obligatorio)">
+                                            </div>                                        
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                       
+                            
 
                         </div>
                         
@@ -176,7 +270,7 @@
                                             <th>Marca</th>
                                             <th>Descripción</th>
                                             <th>Costo del producto</th>
-                                            <th>Precio público</th>
+                                            <th>Precio público</th>                                        
                                         </tr>
                                     </thead>
                                     <!-- FIN TÍTULOS  (SUPERIOR) DE LA TABLA -->
@@ -210,7 +304,7 @@
                                             <td>Aplica Hyund. i-10</td>
                                             <td>15,600</td>
                                             <td>36,900</td>
-                                            
+                                                                                        
                                         </tr>
                                         <tr>
                                             <td>1256</td>                                            
