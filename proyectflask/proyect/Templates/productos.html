@@ -1,5 +1,333 @@
 {% extends "layout.html" %}
 
 {% block body %}
-   <h1>aqui colocas el desarrolo de la pagina de producto</h1>
+
+
+
+
+
+        <!-- ========================================================--> 
+        <!-- INICIO CONTENIDO DE PÁGINA -->
+        <!-- ========================================================-->
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+            <!-- TÍTULO DE LA PÁGINA - Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800">Productos</h1> 
+            
+                
+
+            <!-- DataTales Example -->
+            <div class="content">
+                <div class="animated">   
+                    
+            <!-- ========================================================--> 
+            <!-- INICIA MODAL  -->
+            <!-- ========================================================-->
+                
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <div class="mb-4"></div>     
+
+                    <!-- Button trigger modal -->                 
+                    <button type="button" class="btn btn-primary mb-0"" data-toggle="modal" data-target="#mediumModal">
+                       + Agregar Producto
+                    </button>  
+
+                    <button type="button" class="btn btn-primary mb-0" data-toggle="modal" data-target="#largeModal">
+                        Editar Producto
+                    </button>
+
+                    <button type="button" class="btn btn-primary mb-0" data-toggle="modal" data-target="#Modal">
+                        Eliminar Producto
+                    </button>
+
+                    <div class="modal fade" id="mediumModal" tabindex="-1" role="form" aria-labelledby="mediumModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="mediumModalLabel"> + Agregar Producto</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        ID Producto
+                                        <input type="text" class="form-control" placeholder="ID Producto (Obligatorio)">
+                                    </div>
+                                    <div class="form-group">
+                                        Categoría
+                                        <input type="text" class="form-control" placeholder="*Categoría (Obligatorio)">
+                                    </div>
+                                    <div class="form-group">
+                                        Nombre de Producto
+                                        <input type="email" class="form-control" placeholder="*Nombre de Producto (Obligatorio)">
+                                    </div>
+                                    <div class="form-group">
+                                        Marca
+                                        <input type="text" class="form-control" placeholder="*Marca (Obligatorio)">
+                                    </div>
+                                    <div class="form-group">
+                                        Descripción
+                                        <input type="text" class="form-control" placeholder="*Descripción (Obligatorio)">
+                                    </div>
+                                    <div class="form-group">
+                                        Costo del Producto
+                                        <input type="text" class="form-control" placeholder="*Costo del Producto (Obligatorio)">
+                                    </div>
+                                    <div class="form-group">
+                                        Precio Público
+                                        <input type="text" class="form-control" placeholder="*Precio Público (Obligatorio)">
+                                    </div>                                        
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                            
+                    
+
+                    <div class="modal fade" id="largeModal" tabindex="-1" role="form" aria-labelledby="largeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="largeModalLabel">Editar Producto</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        Nombre de Producto
+                                        <input type="text" class="form-control" placeholder="Nombre de Producto (Obligatorio)">
+                                    </div>
+                                    <div class="form-group">
+                                        ID - (Default)
+                                        <input type="text" class="form-control" placeholder="*Default)">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        Marca
+                                        <input type="text" class="form-control" placeholder="*Marca (Obligatorio)">
+                                    </div>
+                                    <div class="form-group">
+                                        Descripción
+                                        <input type="text" class="form-control" placeholder="*Descripción (Obligatorio)">
+                                    </div>
+                                    <div class="form-group">
+                                        Costo del Producto
+                                        <input type="text" class="form-control" placeholder="*Costo del Producto (Obligatorio)">
+                                    </div>
+                                    <div class="form-group">
+                                        Precio Público
+                                        <input type="text" class="form-control" placeholder="*Precio Público (Obligatorio)">
+                                    </div>                                        
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                       
+                    
+
+                </div>
+                
+                <!-- ========================================================--> 
+                <!-- INICIA TÍTULOS DE LA TABLA -->
+                <!-- ========================================================-->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            
+                            <!-- ========================================================-->
+                            <!-- INICIA TÍTULOS (SUPERIOR) DE LA TABLA -->                                    
+                            <thead>
+                                <tr>
+                                    <th>ID Product</th>                                            
+                                    <th>Categoría</th>
+                                    <th>Nombre del Producto</th>
+                                    <th>Marca</th>
+                                    <th>Descripción</th>
+                                    <th>Costo del producto</th>
+                                    <th>Precio público</th>                                        
+                                </tr>
+                            </thead>
+                            <!-- FIN TÍTULOS  (SUPERIOR) DE LA TABLA -->
+                            <!-- ========================================================-->
+
+
+                            <!-- ========================================================-->
+                            <!-- INICIA TÍTULOS (INFERIOR) DE LA TABLA -->
+                            <tfoot>
+                                <tr>
+                                    <th>ID Product</th>                                            
+                                    <th>Categoría</th>
+                                    <th>Nombre del Producto</th>
+                                    <th>Marca</th>
+                                    <th>Descripción</th>
+                                    <th>Costo del producto</th>
+                                    <th>Precio público</th>                                            
+                                </tr>
+                            </tfoot>
+                            <!-- ========================================================-->
+                            <!-- FIN TÍTULOS (INFERIOR) DE LA TABLA -->
+
+                            <!-- ========================================================-->
+                            <!-- INICIA CONTENIDO DE LA TABLA -->
+                            <tbody>
+                                <tr>
+                                    <td>1235</td>                                            
+                                    <td>Frenos</td>
+                                    <td>Pastillas de freno</td>
+                                    <td>Best Usa</td>
+                                    <td>Aplica Hyund. i-10</td>
+                                    <td>15,600</td>
+                                    <td>36,900</td>
+                                                                                
+                                </tr>
+                                <tr>
+                                    <td>1256</td>                                            
+                                    <td>Frenos</td>
+                                    <td>Kit de embrague</td>
+                                    <td>TNK </td>
+                                    <td>Aplica Hyund. i-10 / Grand i-10</td>
+                                    <td>197,400</td>
+                                    <td>270,000</td>
+                                </tr>
+                                <tr>
+                                    <td>2869</td>                                            
+                                    <td>Aceites</td>
+                                    <td>Aceite motor 20W 50</td>
+                                    <td>Mobil</td>
+                                    <td>Aplica Varios</td>
+                                    <td>29,700</td>
+                                    <td>45,900</td>
+                                </tr>
+                                <tr>
+                                    <td>2837</td>                                            
+                                    <td>Aceites</td>
+                                    <td>Valvulina 5W30</td>
+                                    <td>Shell</td>
+                                    <td>Aplica Varios</td>
+                                    <td>23,200</td>
+                                    <td>43,700</td>
+                                </tr>
+                                <tr>
+                                    <td>3126</td>                                            
+                                    <td>Llantas</td>
+                                    <td>Llanta 165/165/R14</td>
+                                    <td>Goodyear</td>
+                                    <td>Aplica Varios</td>
+                                    <td>135,900</td>
+                                    <td>196,000</td>
+                                </tr>
+                                <tr>
+                                    <td>4562</td>                                            
+                                    <td>Suspensión</td>
+                                    <td>Amortiguadores</td>
+                                    <td>Gabriel</td>
+                                    <td>Aplica Varios</td>
+                                    <td>97,300</td>
+                                    <td>125,000</td>
+                                </tr>                                        
+                            </tbody>
+                            <!-- ========================================================-->
+                            <!-- INICIA CONTENIDO DE LA TABLA -->
+                        </table>
+                    </div>
+                </div>
+                <!-- ========================================================--> 
+                <!-- FIN TÍTULOS DE LA TABLA -->
+                <!-- ========================================================-->
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+
+
+    <!-- ========================================================--> 
+    <!-- INICIA PIE DE PÁGINA -->
+    <!-- ========================================================-->
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>developed by Grupo 7 ©2021 </span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+
+    <!-- ========================================================-->
+    <!-- FIN PIE DE PÁGINA -->
+    <!-- ========================================================--> 
+</div>
+<!-- End of Content Wrapper -->
+<!-- ========================================================--> 
+<!-- FIN CONTENIDO ENVLVENTE -->
+<!-- ========================================================-->
+
+</div>
+<!-- End of Page Wrapper -->
+<!-- ========================================================--> 
+<!-- FIN PÁGINA ENVLVENTE -->
+<!-- ========================================================-->
+
+
+<!-- ========================================================--> 
+<!-- INICIA MODAL INFORMACIÓN USUARIO -->
+<!-- ========================================================--> 
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">Seleccione "Salir"  para terminar su sesión actual.</div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+    </div>
+</div>
+</div>
+<!-- ======================================================--> 
+<!-- FIN MODAL INFORMACIÓN USUARIO -->
+<!-- ======================================================-->
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>    
+
+<!-- ==================================================================================--> 
+<!-- PERSONALIZA LOS NIVELES DE INFORMACIÓ QUE SE MUESTRA DE LA PÁGINA (Show / Buscar) -->
+<!-- ==================================================================================--> 
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
+
+
 {% endblock %}
