@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 App = Flask(__name__)
 
@@ -73,6 +73,10 @@ def infousuario(idusuario):
        return tipousuario[idusuario]
     else:
         return f"El usuario no existe: {idusuario}"
+
+@App.errorhandler(404)
+def not_found(error):
+        return "La página no existe"
 
 if __name__ == '__main__':
     App.run(debug = True)
