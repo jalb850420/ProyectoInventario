@@ -23,10 +23,6 @@ listaprov = {
 }
 
 @App.route('/', methods=["GET"])
-def Home():
-    return render_template('home.html')
-
-@App.route('/', methods=["GET"])
 def Inicio():
     return render_template('inicio.html')
 
