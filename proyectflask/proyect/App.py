@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from flask import g
 
 App = Flask(__name__)
 
@@ -28,7 +29,8 @@ def Home():
 
 @App.route('/Inicio', methods=["GET","POST"])
 def Inicio():
-    return render_template('inicio.html')
+    g.nombre = request.form.get("nombre")
+    return render_template('inicio.html', nombre=g.nombre)
 
 @App.route('/Usuarios', methods=["GET", "POST"])
 def Usuario():

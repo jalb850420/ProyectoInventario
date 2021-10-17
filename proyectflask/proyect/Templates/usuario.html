@@ -10,7 +10,6 @@
                 <li><a href="{{ url_for('Usuario') }}">Usuario</a></li>
                 <li><a href="{{ url_for('Productos') }}">Productos</a></li>
                 <li><a href="{{ url_for('Proveedores') }}">Proveedores</a></li>
-                <li><a href="{{ url_for('Home') }}">Cerrar Sesion</a></li>
                 <!---<li><a href="#">Salir</a></li>-->
             </ul>
         </nav>
@@ -61,7 +60,7 @@
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Alexander Rudas</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Alexander Rudas {{ nombre }}</span>
                         <img class="img-profile rounded-circle"
                             src="static/img/undraw_profile.svg">
                     </a>
@@ -374,7 +373,7 @@ aria-hidden="true">
         <div class="modal-body">Seleccione "Salir"  para terminar su sesión actual.</div>
         <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="{{ url_for('Home') }}">Logout</a>
         </div>
     </div>
 </div>
