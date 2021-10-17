@@ -30,17 +30,15 @@ def Home():
 def Inicio():
     return render_template('inicio.html')
 
-@App.route('/Usuarios', methods=["GET"])
+@App.route('/Usuarios', methods=["GET", "POST"])
 def Usuario():
     return render_template('usuario.html')
 
 @App.route('/Productos', methods=["GET", "POST"])
 def Productos():
-    if request.method == 'POST':
-        return f""
     return render_template('productos.html')
 
-@App.route('/Proveedores', methods=["GET"])
+@App.route('/Proveedores', methods=["GET", "POST"])
 def Proveedores():
     return render_template('proveedores.html')
 
