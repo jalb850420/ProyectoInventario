@@ -33,7 +33,7 @@ def sql_select_productos():
         print(err)
 	
 
-def sql_edit_producto(id_producto, nombre, marca, descripcion, categoria, costo, precio, cantidad):
+def sql_edit_productos(id_producto, nombre, marca, descripcion, categoria, costo, precio, cantidad):
     try:
         strsql = "update Productos set id_producto = '"+id_producto+"', nombre = '"+nombre+"', marca = "+marca+", descripcion = "+descripcion+", categoria = "+categoria+", costo = "+costo+", precio = "+precio+", cantidad = "+cantidad+" where id_producto = "+id_producto+";"
         con = sql_connection()
@@ -45,7 +45,7 @@ def sql_edit_producto(id_producto, nombre, marca, descripcion, categoria, costo,
         print(err)
 	
 
-def sql_delete_producto(id):
+def sql_delete_productos(id):
     try:
         strsql = "delete from Productos where id = "+id+";"
         con = sql_connection()
@@ -58,9 +58,9 @@ def sql_delete_producto(id):
 	
 # Proveedores
 
-def sql_insert_proveedores(id, nombre, categoria, ciudad, direccion, telefono):
+def sql_insert_proveedores(id_proveedores, nombre, categoria, ciudad, direccion, telefono):
     try:
-        sql = f'insert into Proveedores(id, nombre, categoria, ciudad, direccion, telefono) values ("{id}","{nombre}",{categoria},{ciudad},{direccion},{telefono})'
+        sql = f'insert into Proveedores(id_proveedores, nombre, categoria, ciudad, direccion, telefono) values ("{id_proveedores}","{nombre}",{categoria},{ciudad},{direccion},{telefono})'
         con = sql_connection()
         cursorObj = con.cursor()
         cursorObj.execute(sql)
