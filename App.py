@@ -18,13 +18,13 @@ def nuevo():
 	    form = Proveedores() #Crea un nuevo formulario de tipo producto
 	    return render_template('nuevo.html', form=form) #redirecciona vista nuevo.html enviando la variable form
    if  request.method == "POST": #Si la ruta es accedida a través del método POST entonces
-        codigo = request.form["id_proveedores"] #asigna variable cod con valor enviado desde formulario  en la vista html
+        id_proveedores = request.form["id_proveedores"] #asigna variable cod con valor enviado desde formulario  en la vista html
         nombre = request.form["nombre"] #asigna variable nom con valor enviado desde formulario en la vista html
         categoria = request.form["categoria"] #asigna vble cant con valor enviado desde formulario en la vista html
         ciudad = request.form["ciudad"] #asigna vble cant con valor enviado desde formulario en la vista html
         direccion = request.form["direccion"] #asigna vble cant con valor enviado desde formulario en la vista html
         telefono = request.form["telefono"] #asigna vble cant con valor enviado desde formulario en la vista html       sql_insert_proveedores(cod, nom, cant, precio) #llamado de la función para insertar el nuevo producto
-        sql_insert_proveedores(codigo, nombre, categoria, ciudad, direccion, telefono) #llamado de la función para insertar el nuevo producto
+        sql_insert_proveedores(id_proveedores, nombre, categoria, ciudad, direccion, telefono) #llamado de la función para insertar el nuevo producto
         return 'OK'
 
 @App.route('/', methods=["GET","POST"])
