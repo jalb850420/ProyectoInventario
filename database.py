@@ -82,7 +82,7 @@ def sql_select_proveedores():
         print(err)
 	
 
-def sql_edit_Proveedores(id_proveedores, nombre, categoria, ciudad, direccion, telefono):
+def sql_edit_proveedores(id_proveedores, nombre, categoria, ciudad, direccion, telefono):
     try:
         strsql = "update Proveedores set id_proveedores = '"+id_proveedores+"', nombre = '"+nombre+"', categoria = "+categoria+", ciudad = "+ciudad+", direccion = "+direccion+", telefono = "+telefono+" where id = "+id_proveedores+";"
         con = sql_connection()
