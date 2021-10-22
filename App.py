@@ -6,11 +6,16 @@ from database import sql_insert_producto, sql_select_productos, sql_edit_product
 from database import sql_select_proveedores, sql_insert_proveedores, sql_edit_proveedores, sql_delete_proveedores
 from database import sql_select_usuarios, sql_insert_usuarios, sql_edit_usuarios, sql_delete_usuarios
 from forms import Proveedores
-
+from forms import Producto
 
 App = Flask(__name__)
 App.secret_key = os.urandom(24)
 
+@App.route('/productos1') 
+def productos1(): 
+  form=Producto()
+  productos = sql_select_productos()
+  return render_template('productos1.html', productos = productos)
 
 @App.route('/nuevo', methods=['GET', 'POST'])
 def nuevo():
