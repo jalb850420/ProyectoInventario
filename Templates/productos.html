@@ -1,31 +1,37 @@
 {% extends "base.html" %}
 
 {% block body %}
+<form action="/producto" method="post">
+  {{form.id.label}} {{form.id}}	
+  <br>
+  {{form.enviar}}
+  {{form.hidden_tag()}}
+</form>
+<br>
     <table id="tabel" border="1"> 
         <tbody>
-          <tr> 
-            <td width="2">id_producto</td> 
-            <td width="2">Nombre</td> 
-            <td width="2">marca</td> 
-            <td width="2">descripcion</td> 
-            <td width="2">categoria</td> 
-            <td width="2">costo</td> 
-            <td width="2">precio</td> 
-            <td width="2">cantidad</td> 
-            <td width="2">id_proveedores</td>                 
-        </tr> 
-        {% for pro in productos %}
-        <tr>
-            <td width="2">{% print(pro[0]) %}</td> 
-            <td width="2">{% print(pro[1]) %}</td> 
-            <td width="2">{% print(pro[2]) %}</td>  
-            <td width="2">{% print(pro[3]) %}</td>
-            <td width="2">{% print(pro[4]) %}</td>
-            <td width="2">{% print(pro[5]) %}</td>
-            <td width="2">{% print(pro[6]) %}</td>
-            <td width="2">{% print(pro[7]) %}</td>
-            <td width="2">{% print(pro[8]) %}</td>
-        </tr>
-          {% endfor %}
+            <tr> 
+              <td width="2">id_producto</td> 
+              <td width="2">Nombre</td> 
+              <td width="2">Marca</td> 
+              <td width="2">Descripcion</td> 
+              <td width="2">Categoria</td> 
+              <td width="2">Costo</td> 
+              <td width="2">Precio</td> 
+              <td width="2">Cantidad</td> 
+              <td width="2">Id_proveedores</td>                 
+            </tr> 
+            {% for pro in productos %}
+              <tr>
+                <td width="2">{% print(pro[1]) %}</td> 
+                <td width="2">{% print(pro[2]) %}</td>  
+                <td width="2">{% print(pro[3]) %}</td>
+                <td width="2">{% print(pro[4]) %}</td>
+                <td width="2">{% print(pro[5]) %}</td>
+                <td width="2">{% print(pro[6]) %}</td>
+                <td width="2">{% print(pro[7]) %}</td>
+                <td width="2">{% print(pro[8]) %}</td>
+              </tr>
+            {% endfor %}
         </tbody>
 {% endblock %}

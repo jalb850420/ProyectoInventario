@@ -8,4 +8,5 @@ class TipoUsuario(FlaskForm):
     enviar = SubmitField('Agregar Tipo de Usuario')
 
 class Producto(FlaskForm):
-    codigo = StringField('Tipo de Usuario', validators=[DataRequired()])
+    id = StringField('Id Producto', validators=[DataRequired("Tienes que introducir el dato")])
+    enviar = SubmitField('Ver Producto')

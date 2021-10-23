@@ -9,11 +9,12 @@ from forms import  TipoUsuario,Producto
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-@app.route('/productos') 
+@app.route('/productos', methods=['GET', 'POST']) 
 def productos(): 
   form=Producto()
   productos = sql_select_productos()
-  return render_template('productos.html', productos = productos)
+  return render_template('productos.html', productos = productos, form = form)
+ 
 
 @app.route('/nuevo_Tipo_Usuario', methods=['GET', 'POST'])
 def nuevotipousuario():
