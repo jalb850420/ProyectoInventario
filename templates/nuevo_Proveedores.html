@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/nuevo" method="post">
+        {{form.codigo.label}} {{form.codigo}}	
+        <br>
+        {{form.nombre.label}} {{form.nombre}}
+        <br>
+        {{form.precio.label}} {{form.precio}}
+        <br>
+        {{form.cantidad.label}} {{form.cantidad}}
+        <br>
+        {{form.cantidad.label}} {{form.cantidad}}
+        <br>
+        {{form.cantidad.label}} {{form.cantidad}}
+        <br>
+        {{form.enviar}}
+        {{form.hidden_tag()}}
+</form>
+</body>
+</html>
