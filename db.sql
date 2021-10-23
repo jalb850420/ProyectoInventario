@@ -1,3 +1,20 @@
+CREATE TABLE Categoria (
+    idCategoria      INTEGER      PRIMARY KEY
+                                  NOT NULL,
+    nombrecateg      VARCHAR (45),
+    descripcioncateg VARCHAR (45) 
+);
+
+CREATE TABLE Tipo_Usuario (
+    idTipo_Usuario INTEGER      PRIMARY KEY
+                                NOT NULL,
+    nombreTU       VARCHAR (45) 
+);
+
+
+
+
+
 create table Clientes(
 	id integer primary key,
 	nombre text,

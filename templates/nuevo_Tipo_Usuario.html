@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <form action="/nuevo_Tipo_Usuario" method="post">
+        {{form.codigo.label}} {{form.codigo}}	
+        <br>
+        {{form.nombre.label}} {{form.nombre}}
+        <br>
+        {{form.enviar}}
+        {{form.hidden_tag()}}
+    </form>
+{% endblock %}

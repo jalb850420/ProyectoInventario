@@ -4,8 +4,8 @@ from flask import Flask, request, render_template
 
 
 
-from database import sql_select_productos, sql_insert_producto, sql_edit_producto, sql_delete_producto
-from forms import Producto
+from database import sql_insert_tipousuario, sql_select_productos, sql_edit_producto, sql_delete_producto
+from forms import  TipoUsuario,Producto
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
@@ -15,17 +15,15 @@ def productos():
   productos = sql_select_productos()
   return render_template('productos.html', productos = productos)
 
-@app.route('/nuevo_Proveedores', methods=['GET', 'POST'])
-def nuevo():
+@app.route('/nuevo_Tipo_Usuario', methods=['GET', 'POST'])
+def nuevotipousuario():
    if  request.method == "GET": #Si la ruta es accedida a través del método GET entonces
-	    form = Producto() #Crea un nuevo formulario de tipo producto
-	    return render_template('nuevo_Proveedores.html', form=form) #redirecciona vista nuevo.html enviando la variable form
+	    form = TipoUsuario() #Crea un nuevo formulario de tipo producto
+	    return render_template('nuevo_Tipo_Usuario.html', form=form) #redirecciona vista nuevo.html enviando la variable form
    if  request.method == "POST": #Si la ruta es accedida a través del método POST entonces
         cod = request.form["codigo"] #asigna variable cod con valor enviado desde formulario  en la vista html
         nom = request.form["nombre"] #asigna variable nom con valor enviado desde formulario en la vista html
-        cant = request.form["cantidad"] #asigna vble cant con valor enviado desde formulario en la vista html
-        precio = request.form["precio"] #asigna vble cant con valor enviado desde formulario en la vista html
-        sql_insert_producto(cod, nom, cant, precio) #llamado de la función para insertar el nuevo producto
+        sql_insert_tipousuario(cod, nom) #llamado de la función para insertar el nuevo producto
         return 'OK'
 
 @app.route('/edit', methods=['GET'])

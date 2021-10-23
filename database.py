@@ -9,9 +9,9 @@ def sql_connection():
     except :
         print ('error')
 
-def sql_insert_producto(codigo, nombre, cantidad,precio):
+def sql_insert_tipousuario(cod, nom):
     try:
-        sql = f'insert into producto(id,nombre,existencia,precio) values ("{codigo}","{nombre}",{cantidad},{precio})'
+        sql = f'insert into Tipo_Usuario(idTipo_Usuario,nombreTU) values ("{cod}","{nom}")'
         con = sql_connection()
         cursorObj = con.cursor()
         cursorObj.execute(sql)
