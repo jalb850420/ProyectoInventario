@@ -5,15 +5,15 @@ from flask import g
 from database import sql_insert_producto, sql_select_productos, sql_edit_productos, sql_delete_productos
 from database import sql_select_proveedores, sql_insert_proveedores, sql_edit_proveedores, sql_delete_proveedores
 from database import sql_select_usuarios, sql_insert_usuarios, sql_edit_usuarios, sql_delete_usuarios
-from forms import Proveedores
-from forms import Producto
+from forms import Proveedores,Producto
+
 
 App = Flask(__name__)
 App.secret_key = os.urandom(24)
 
 @App.route('/productos1') 
 def productos1(): 
-  form=Producto()
+  form = Producto()
   productos = sql_select_productos()
   return render_template('productos1.html', productos = productos)
 
@@ -21,7 +21,7 @@ def productos1():
 def nuevo():
    if  request.method == "GET": #Si la ruta es accedida a través del método GET entonces
 	    form = Proveedores() #Crea un nuevo formulario de tipo producto
-	    return render_template('nuevo.html', form=form) #redirecciona vista nuevo.html enviando la variable form
+	    return render_template('nuevo.html', form = form) #redirecciona vista nuevo.html enviando la variable form
    if  request.method == "POST": #Si la ruta es accedida a través del método POST entonces
         id_proveedores = request.form["id_proveedores"] #asigna variable cod con valor enviado desde formulario  en la vista html
         nombre = request.form["nombre"] #asigna variable nom con valor enviado desde formulario en la vista html
