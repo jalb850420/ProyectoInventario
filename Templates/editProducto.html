@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p> 
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% block body %}
+    <form action="/actualizar/{{data.0}}" method="post">
+        {{form.IdProducto.label}}  <input id="IdProducto" name="IdProducto" required type="text" value="{{ data.0 }}">	
+        <br>
+        {{form.NombreProducto.label}} <input id="NombreProducto" name="NombreProducto" required type="text" value="{{ data.1 }}">
+        <br>
+        {{form.MarcaProducto.label}} <input id="MarcaProducto" name="MarcaProducto" required type="text" value="{{ data.2 }}">
+        <br>
+        {{form.DescripProducto.label}} <input id="DescripProducto" name="DescripProducto" required type="text" value="{{ data.3 }}">
+        <br>
+        {{form.CostoProducto.label}} <input id="CostoProducto" name="CostoProducto" required type="text" value="{{ data.4 }}">	
+        <br>
+        {{form.Precio.label}} <input id="Precio" name="Precio" required type="text" value="{{ data.5 }}">
+        <br>
+        {{form.Cantidad.label}} <input id="Cantidad" name="Cantidad" required type="text" value="{{ data.6 }}">		
+        <br>
+        {{form.IdProv.label}} <input id="IdProv" name="IdProv" required type="text" value="{{ data.7 }}">
+        <br>        
+        {{form.IdCategoria.label}} <input id="IdCategoria" name="IdCategoria" required type="text" value="{{ data.8 }}">		
+        <br>
+        {{form.enviar}}
+        {{form.hidden_tag()}}
+    </form>
+{% endblock %}

@@ -1,6 +1,9 @@
 from os import error
 import sqlite3
 from sqlite3 import Error
+from forms import EditProducto
+
+from flask.templating import render_template
 
 def sql_connection():
     try:
@@ -105,9 +108,20 @@ def sql_insert_producto(id_producto, nombre, marca, descripcion, categoria, cost
     except Error as err:
         print(err)
 
-def sql_edit_productos(id_producto, nombre, marca, descripcion, categoria, costo, precio, cantidad):
+def sql_edit_productos(id):
     try:
-        strsql = "update Productos set id_producto = '"+id_producto+"', nombre = '"+nombre+"', marca = "+marca+", descripcion = "+descripcion+", categoria = "+categoria+", costo = "+costo+", precio = "+precio+", cantidad = "+cantidad+" where id_producto = "+id_producto+";"
+        strsql = "select * from Productos where id_producto ="+id+";"
+        con = sql_connection()
+        cursorObj = con.cursor()
+        cursorObj.execute(strsql)
+        data = cursorObj.fetchall()
+        return data[0]
+    except Error as err:
+        print(err)
+	
+def sql_actualizar_producto(idp, nomproducto, marcaproducto, descripproducto, costoproducto, precio, cantidad, idprov, idcategoria, id):
+    try:
+        strsql = "update Productos set id_producto = '"+idp+"', nombre = '"+nomproducto+"', marca = "+marcaproducto+", descripcion = "+descripproducto+", costo = '"+costoproducto+"', precio = '"+precio+"', cantidad = '"+cantidad+"', id_proveedores = '"+idprov+"', idCategoria = '"+idcategoria+"' where id_producto = "+id+";"
         con = sql_connection()
         cursorObj = con.cursor()
         cursorObj.execute(strsql)
@@ -115,11 +129,11 @@ def sql_edit_productos(id_producto, nombre, marca, descripcion, categoria, costo
         con.close()
     except Error as err:
         print(err)
-	
+
 
 def sql_delete_productos(id):
     try:
-        strsql = "delete from Productos where id = "+id+";"
+        strsql = "delete from Productos where id_producto = "+id+";"
         con = sql_connection()
         cursorObj = con.cursor()
         cursorObj.execute(strsql)

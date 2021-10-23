@@ -1,4 +1,11 @@
 {% extends "base.html" %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p> 
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 
 {% block body %}
     <form action="/nuevo_Tipo_Usuario" method="post">

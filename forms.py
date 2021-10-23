@@ -10,3 +10,15 @@ class TipoUsuario(FlaskForm):
 class Producto(FlaskForm):
     id = StringField('Id Producto', validators=[DataRequired("Tienes que introducir el dato")])
     enviar = SubmitField('Ver Producto')
+
+class EditProducto(FlaskForm):
+    IdProducto = StringField('Id Producto', validators=[DataRequired()])
+    NombreProducto = StringField('Nombre', validators=[DataRequired()])
+    MarcaProducto = StringField('Marca', validators=[DataRequired()])
+    DescripProducto = StringField('Descripcion', validators=[DataRequired()])
+    CostoProducto = StringField('Costo', validators=[DataRequired()])
+    Precio = StringField('Precio', validators=[DataRequired()])
+    Cantidad = StringField('Cantidad', validators=[DataRequired()])
+    IdProv = StringField('Id Proveedor', validators=[DataRequired()])
+    IdCategoria = StringField('Id Catedoria', validators=[DataRequired()])
+    enviar = SubmitField('Actualizar')
