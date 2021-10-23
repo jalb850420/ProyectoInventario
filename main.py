@@ -7,6 +7,10 @@ from forms import  TipoUsuario,Producto
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
+@app.route('/', methods=['GET', 'POST']) 
+def hola(): 
+  return "Hola mundo"
+
 @app.route('/productos', methods=['GET', 'POST']) 
 def productos(): 
   form=Producto()
