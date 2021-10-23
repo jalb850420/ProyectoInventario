@@ -20,10 +20,10 @@ def productos1():
 @App.route('/nuevo', methods=['GET', 'POST'])
 def nuevo():
    if  request.method == "GET": #Si la ruta es accedida a través del método GET entonces
-	    form = Proveedores() #Crea un nuevo formulario de tipo producto
+	    form = Proveedores() #Crea un nuevo formulario de tipo Proveedores
 	    return render_template('nuevo.html', form = form) #redirecciona vista nuevo.html enviando la variable form
    if  request.method == "POST": #Si la ruta es accedida a través del método POST entonces
-        id_proveedores = request.form["id_proveedores"] #asigna variable cod con valor enviado desde formulario  en la vista html
+        id_proveedores = request.form[id_proveedores] #asigna variable cod con valor enviado desde formulario  en la vista html
         nombre = request.form["nombre"] #asigna variable nom con valor enviado desde formulario en la vista html
         categoria = request.form["categoria"] #asigna vble cant con valor enviado desde formulario en la vista html
         ciudad = request.form["ciudad"] #asigna vble cant con valor enviado desde formulario en la vista html

@@ -60,10 +60,12 @@ def sql_delete_productos(id):
 
 def sql_insert_proveedores(id_proveedores, nombre, categoria, ciudad, direccion, telefono):
     try:
-        sql = f'insert into Proveedores(id_proveedores, nombre, categoria, ciudad, direccion, telefono) values ("{id_proveedores}","{nombre}","{categoria}","{ciudad}","{direccion}","{telefono}")'
+        sql = f'insert into Proveedores(id_proveedores, nombre, categoria, ciudad, direccion, telefono) values ('"{id_proveedores}"',"{nombre}","{categoria}","{ciudad}","{direccion}","{telefono}")'
+        #statement = "insert into Proveedores(id_proveedores, nombre, categoria, ciudad, direccion, telefono) values ('?', ?, ?, ?, ?, ?)"
         con = sql_connection()
         cursorObj = con.cursor()
         cursorObj.execute(sql)
+        #cursorObj.execute(statement, [id_proveedores , nombre, categoria, ciudad, direccion, telefono])
         con.commit()
         con.close()
     except Error as err:
