@@ -15,11 +15,11 @@ def productos():
   productos = sql_select_productos()
   return render_template('productos.html', productos = productos)
 
-@app.route('/nuevo', methods=['GET', 'POST'])
+@app.route('/nuevo_Producto', methods=['GET', 'POST'])
 def nuevo():
    if  request.method == "GET": #Si la ruta es accedida a través del método GET entonces
 	    form = Producto() #Crea un nuevo formulario de tipo producto
-	    return render_template('nuevo.html', form=form) #redirecciona vista nuevo.html enviando la variable form
+	    return render_template('nuevo_Producto.html', form=form) #redirecciona vista nuevo.html enviando la variable form
    if  request.method == "POST": #Si la ruta es accedida a través del método POST entonces
         cod = request.form["codigo"] #asigna variable cod con valor enviado desde formulario  en la vista html
         nom = request.form["nombre"] #asigna variable nom con valor enviado desde formulario en la vista html
