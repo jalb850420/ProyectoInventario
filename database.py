@@ -121,7 +121,8 @@ def sql_edit_productos(id):
 	
 def sql_actualizar_producto(idp, nomproducto, marcaproducto, descripproducto, costoproducto, precio, cantidad, idprov, idcategoria, id):
     try:
-        strsql = "update Productos set id_producto = '"+idp+"', nombre = '"+nomproducto+"', marca = "+marcaproducto+", descripcion = "+descripproducto+", costo = '"+costoproducto+"', precio = '"+precio+"', cantidad = '"+cantidad+"', id_proveedores = '"+idprov+"', idCategoria = '"+idcategoria+"' where id_producto = "+id+";"
+        strsql = """UPDATE Usuarios SET id_producto = %s, nombre = %s, marca = %s, descripcion = %s, costo = %s, precio = %s, cantidad = %s, id_proveedores = %s, idCategoria = %s WHERE id_producto = %s """, (idp, nomproducto, marcaproducto, descripproducto, costoproducto, precio, cantidad, idprov, idcategoria, id)
+        #strsql = "update Productos set id_producto = '"+idp+"', nombre = '"+nomproducto+"', marca = "+marcaproducto+", descripcion = "+descripproducto+", costo = '"+costoproducto+"', precio = '"+precio+"', cantidad = '"+cantidad+"', id_proveedores = '"+idprov+"', idCategoria = '"+idcategoria+"' where id_producto = "+id+";"
         con = sql_connection()
         cursorObj = con.cursor()
         cursorObj.execute(strsql)
