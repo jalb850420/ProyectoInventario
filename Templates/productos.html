@@ -1,31 +1,511 @@
 {% extends "base.html" %}
 
+
 {% block body %}
-<br>
-    <table id="tabel" border="1"> 
-        <tbody>
-            <tr height=30> 
-              <td width="30">id_producto</td> 
-              <td width="30">Nombre</td> 
-              <td width="30">Marca</td> 
-              <td width="30">Descripcion</td> 
-              <td width="30">Categoria</td> 
-              <td width="30">Costo</td> 
-              <td width="30">Precio</td> 
-              <td width="30">Cantidad</td> 
-              <td width="30">Id_proveedores</td>        
-              <td width="150">  -     Operaciones     -</td>                 
-            </tr> 
-            {% for pro in productos %}
-              <tr>
-                {% for col in range(9) %}
-                  <td width="2">{% print(pro[col]) %}</td>
-                {% endfor %}
-                <td width="100" >
-                  <a href="/edit/{{ pro[0] }}">Editar</a>
-                  <a href="/delete/{{ pro[0] }}">Eliminar</a>
-                </td>
-              </tr>
+<header class="header">
+   <div class="container logo-nav-container">
+       <a href="#" class="logo">HOTAI MOTOR</a>
+       <nav class="navigation">
+           <ul>
+            <li><a href="{{ url_for('Inicio') }}">Inicio</a></li>
+            <li><a href="{{ url_for('Usuario') }}">Usuario</a></li>
+            <li><a href="{{ url_for('Productos') }}">Productos</a></li>
+            <li><a href="{{ url_for('Proveedores') }}">Proveedores</a></li>
+            <!---<li><a href="#">Salir</a></li>-->
+           </ul>
+       </nav>
+   </div>
+</header>
+
+
+<!-- ==========================================--> 
+<!-- CUERPO DE LA PAGINA -->
+<!-- ==========================================-->
+<body id="page-top">
+
+<!-- ========================================================--> 
+<!-- INICIA PÁGINA ENVLVENTE -->
+<!-- ========================================================-->
+<!-- Page Wrapper -->
+<div id="wrapper">   
+
+
+<!-- ========================================================--> 
+<!-- INICIA  CONTENIDO ENVLVENTE -->
+<!-- ========================================================-->
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+   <!-- Main Content -->
+   <div id="content">
+       
+       <!-- ========================================================--> 
+       <!-- BARRA SUPERIOR -->
+       <!-- ========================================================-->
+       <!-- Topbar -->
+       <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+           <!-- Sidebar Toggle (Topbar) -->
+           <form class="form-inline">
+               <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                   <i class="fa fa-bars"></i>
+               </button>
+           </form>
+
+           <ul class="navbar-nav ml-auto">                          
+
+               <!-- ========================================================--> 
+               <!-- BOTÓN DE NAVEGACIÓN DE LA INFORMACIÓN DEL USUARIO -->
+               <!-- ========================================================-->
+               <!-- Nav Item - User Information -->
+               <li class="nav-item dropdown no-arrow">
+                   <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       <span class="mr-2 d-none d-lg-inline text-gray-600 small">Alexander Rudas</span>
+                       <img class="img-profile rounded-circle"
+                           src="static/img/undraw_profile.svg">
+                   </a>
+                   <!-- Dropdown - User Information -->
+                   <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                       aria-labelledby="userDropdown">
+                       <a class="dropdown-item" href="#">
+                           <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                           Perfil
+                       </a>
+                                                      
+                       <div class="dropdown-divider"></div>
+                       <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                           <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                           Cerrar Sesión
+                       </a>
+                   </div>
+               </li>                        
+           </ul>
+       </nav>
+       <!-- ========================================================--> 
+       <!-- FIN MENÚ DE NAVEGACIÓN DE LA INFORMACIÓN DEL USUARIO -->
+       <!-- ========================================================-->
+       <!-- End of Topbar -->
+
+
+
+       <!-- ========================================================--> 
+       <!-- INICIO CONTENIDO DE PÁGINA -->
+       <!-- ========================================================-->
+       <!-- Begin Page Content -->
+       <div class="container-fluid">
+
+           <!-- TÍTULO DE LA PÁGINA - Page Heading -->
+           <h1 class="h3 mb-2 text-gray-800">Productos</h1> 
+           
+               
+
+           <!-- DataTales Example -->
+           <div class="content">
+            {% with messages = get_flashed_messages()  %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
             {% endfor %}
-        </tbody>
+            {% endif %}
+            {% endwith %}
+            <div class="animated">
+                   
+             <!-- ========================================================--> 
+           <!-- INICIA MODAL  -->
+           <!-- ========================================================-->
+               
+
+           <div class="card shadow mb-4">
+               <div class="card-header py-3">
+                   <div class="mb-4"></div>     
+
+                   <!-- Button trigger modal -->                 
+                   <button type="button" class="btn btn-primary mb-0" data-toggle="modal" data-target="#mediumModal">
+                      + Agregar Producto
+                   </button>  
+
+
+                   <!--*********************************************************************************************************************-->
+                   <!--**************************************     --- INICIO MODAL DE BOTÓN AGREGAR --- ******************************************-->
+                    <!--**********************************************************************************************************************-->
+
+                   <div class="modal fade" id="mediumModal" tabindex="-1" role="form" aria-labelledby="mediumModalLabel" aria-hidden="true">
+                       <div class="modal-dialog modal-lg" role="document">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                   <h4 class="modal-title" id="mediumModalLabel"> + Agregar Producto</h4>
+                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                       <span aria-hidden="true">&times;</span>
+                                   </button>
+                               </div>
+                               <div class="modal-body">  
+                                <form action="/Productos" method="POST">    <!--LLama a la ruta para enviar datos al servidor-->                       
+                                   <div class="form-group">
+                                       Nombre Producto
+                                       <input type="text" name="name" class="form-control" placeholder="*Nombre producto(Obligatorio)">                                                                       
+                                   </div>
+                                   <div class="form-group">
+                                       Marca
+                                       <select name="brand" id="brand"  class="form-control" required>
+                                        <option value="" selected disabled >Seleccione una marca </option>
+                                        <option value="1" >Best Usa</option>
+                                        <option value="2" >GTI</option>
+                                        <option value="3" >Mobis</option>
+                                        </select>
+                                   </div>
+                                   <div class="form-group">
+                                        Descripción
+                                    <input type="text" name="name" class="form-control" placeholder="Ingrese una Breve descripción (Opcional)">                                                                       
+                                    </div>    
+                                    <div class="form-group">
+                                        Categoría
+                                    <input type="text" name="name" class="form-control" placeholder="Ingrese una Breve descripción (Opcional)">                                                                       
+                                    </div>                                                               
+                                    <div class="form-group">
+                                        Cantidad
+                                    <input type="text" name="quantity" class="form-control" placeholder="*Ingrese la cantidad de productos(Obligatorio)">                                                                       
+                                    </div>
+                                    <div class="form-group">
+                                        Costo
+                                    <input type="text" name="cost" class="form-control" placeholder="*Ingrese el costo unitario del producto (Obligatorio)">                                                                       
+                                    </div>                                                            
+                                   <div class="modal-footer">
+                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                       <button type="submit" class="btn btn-primary">Guardar</button>
+                                   </div>
+                                </form>  
+                               </div>
+                           </div>
+                       </div>
+                   </div>        
+                   <!--*********************************************************************************************************************-->
+                   <!--**************************************     --- FINAL MODAL DE BOTÓN AGREGAR --- ******************************************-->
+                    <!--**********************************************************************************************************************-->                    
+                   
+
+                   <div class="modal fade" id="largeModal" tabindex="-1" role="form" aria-labelledby="largeModalLabel" aria-hidden="true">
+                       <div class="modal-dialog modal-lg" role="document">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                   <h4 class="modal-title" id="largeModalLabel">Editar Producto</h4>
+                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                       <span aria-hidden="true">&times;</span>
+                                   </button>
+                               </div>
+                               <div class="modal-body">                                                     
+                                   <div class="form-group">
+                                       Categoría
+                                       <input type="email" class="form-control" placeholder="Categoría">
+                                   </div>
+                                   <div class="form-group">
+                                       Ciudad
+                                       <input type="text" class="form-control" placeholder="Ciudad">
+                                   </div>
+                                   <div class="form-group">
+                                       Dirección
+                                       <input type="text" class="form-control" placeholder="Dirección">
+                                   </div>
+                                   <div class="form-group">
+                                       Teléfono/Celular
+                                       <input type="text" class="form-control" placeholder="Teléfono/Celular">
+                                   </div>                 
+                               </div>
+                               <div class="modal-footer">
+                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                   <button type="button" class="btn btn-primary">Guardar</button>
+                               </div>
+                           </div>
+                       </div>
+                   </div>                       
+                   
+
+               </div>
+               <div class="modal fade" id="Modal" tabindex="-1" role="form" aria-labelledby="mediumModalLabel" aria-hidden="true">
+                   <div class="modal-dialog modal-lg" role="document">
+                       <div class="modal-content">
+                           <div class="modal-header">
+                               <h4 class="modal-title" id="mediumModalLabel"> Eliminar producto </h4>
+                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                               </button>
+                           </div>
+                           <div class="modal-body">
+                               <div class="form-group">
+                                  ¿Estás seguro que deseas eliminar este producto?
+                               </div>
+                               </div>
+                           <div class="modal-footer">
+                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                               <button type="button" class="btn btn-primary">Eliminar</button>
+                           </div>
+                       </div>
+                   </div>
+               </div>                            
+
+
+               
+               <!-- ========================================================--> 
+               <!-- INICIA TÍTULOS DE LA TABLA -->
+               <!-- ========================================================-->
+               <div class="card-body">
+                   <div class="table-responsive">
+                       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                           
+                           <!-- ========================================================-->
+                           <!-- INICIA TÍTULOS (SUPERIOR) DE LA TABLA -->                                    
+                           <thead>
+                               <tr>
+                                <th>ID Producto</th>                                            
+                                <th>Nombre Producto</th>
+                                <th>Marca</th>                                   
+                                <th>Descripción</th>
+                                <th>Categoría</th>
+                                <th>Cantidad</th>
+                                <th>Costo</th>                                            
+                                <th>Proveedor</th>    
+                                <th>Acción</th>                                                                             
+                               </tr>
+                           </thead>
+                           <!-- FIN TÍTULOS  (SUPERIOR) DE LA TABLA -->
+                           <!-- ========================================================-->
+
+
+                           <!-- ========================================================-->
+                           <!-- INICIA TÍTULOS (INFERIOR) DE LA TABLA -->
+                           <tfoot>
+                               <tr>
+                                   <th>ID Producto</th>                                            
+                                   <th>Nombre Producto</th>
+                                   <th>Marca</th>                                   
+                                   <th>Descripción</th>
+                                   <th>Categoría</th>
+                                   <th>Cantidad</th>
+                                   <th>Costo</th>                                            
+                                   <th>Proveedor</th>    
+                                   <th>Acción</th>                                      
+                               </tr>
+                           </tfoot>
+                           <!-- ========================================================-->
+                           <!-- FIN TÍTULOS (INFERIOR) DE LA TABLA -->
+
+                           <!-- ========================================================-->
+                           <!-- INICIA CONTENIDO DE LA TABLA -->
+                           <tbody>
+                               
+                               <!--*******************************************************-->
+                                <!--Llamado a la Base de datos de acuerdo a las posiciones-->
+                                <!--********************************************************-->
+                            {% for item in products %}
+                            <tr>
+                                <td>{{item.0}}</td> <!--Id. producto en la posicion 0 --->                                          
+                                <td>{{item.1}}</td> <!--Nombre. producto  en la posicion 1 --->   
+
+                                <!--{% if item.2 == '1' %} --> <!--Categoría. producto  en la posicion 2 --->
+                                   <!-- <td>Autopartes en general</td> <!--Categoría. producto en la posicion 2 ---> 
+                                <!--{% elif item.2 == '2' %}  
+                                    <td>Llantas</td> <!--Categoría. producto en la posicion 2 --->  
+                                <!--{% else %} 
+                                    <td>Autopartes Eléctricas</td> <!--Categoría. producto en la posicion 2 --->   
+                                <!--{% endif %}   
+                                                                              
+                                {% if item.3 == '1' %}  <!--Ciudad. producto  en la posicion 2 --->
+                                    <!--<td>Bogotá</td> <!--Ciudad. producto en la posicion 2 ---> 
+                                <!--{% elif item.3 == '2' %}  
+                                    <td>Medellín</td> <!--Ciudad. producto en la posicion 2 --->  
+                                <!--{% else %} 
+                                    <td>Barranquilla</td> <!--Ciudad. producto en la posicion 2 --->   
+                                <!--{% endif %} -->
+                                <td>{{item.2}}</td> <!--Marca. producto  en la posicion 4 --->
+                                <td>{{item.3}}</td> <!--Descripción. producto  en la posicion 4 --->
+                                <td>{{item.4}}</td> <!--Caegoría. producto  en la posicion 4 --->
+                                <td>{{item.5}}</td> <!--Cantidad. producto  en la posicion 5 --->  
+                                <td>{{item.6}}</td> <!--Costo. producto  en la posicion 5 ---> 
+                                <td>{{item.7}}</td> <!--Proveedor. producto  en la posicion 5 --->
+                                
+                                <td>
+
+                                    <!--***********************************************************************************************************-->
+                                    <!--  ************************* --- ACCIÓN DEL BOTÓN EDITAR QUE CONECTA CON EL MODAL ---  *********************-->
+                                    <!--************************************************************************************************************-->
+                                    <a href="" class="btn btn-sm btn-info py-2" data-toggle="modal"  data-target="#largeModal{{item.0}}">
+                                        <i  class="fas fa-edit"></i>    <!--Esta línea de código trae el botón Eliminar de Bootstrap-->
+                                    </a>
+                                    <div class="modal fade" id="largeModal{{item.0}}" tabindex="-1" role="form" aria-labelledby="largeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="largeModalLabel">Editar Producto</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">  
+                                                    <form action="/Productos/update/{{item.0}}" method="POST">    <!--LLama a la ruta para enviar datos al servidor-->                       
+                                                       <div class="form-group">
+                                                            Nombre Producto
+                                                           <!--El value =""{{item.1}}" carga el modal cargando los datos de la fila que se van a editar-->
+                                                           <input type="text" name="name" value="{{item.1}}"class="form-control">                                                                       
+                                                       </div>
+                                                       <div class="form-group">                                                           
+                                                            Marca
+                                                            <input type="text" name="brand" value="{{item.2}}" class="form-control">                                                                                                       
+                                                       </div>
+                                                       <div class="form-group">
+                                                            Descripción
+                                                            <input type="text" name="description" value="{{item.3}}" class="form-control">                                  
+                                                       </div>
+                                                       <div class="form-group">
+                                                            Categoría
+                                                            <input type="text" name="category" value="{{item.4}}" class="form-control">                                                       
+                                                       </div>                                                       
+                                                       <div class="form-group">
+                                                            Cantidad
+                                                           <input type="text" name="quantity" value="{{item.6}}" class="form-control">                                  
+                                                       </div>
+                                                       <div class="form-group">
+                                                            Costo
+                                                           <input type="text" name="cost" value="{{item.5}}" class="form-control">                                       
+                                                       </div>                                                        
+                                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                           <button type="submit" class="btn btn-primary">Guardar</button>
+                                                       </div>                                                
+                                                    </form>                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <!--***********************************************************************************-->
+
+                                    <!--***************************************************-->
+                                    <!--ACCIÓN DEL BOTÓN ELIMINAR QUE CONECTA CON EL MODAL-->
+                                    <!--***************************************************-->                                    
+                                    <button data-toggle="modal"  data-target="#deleteModal{{item.0}}" class="btn btn-sm btn-danger py-2" type="submit">
+                                        <i class="fas fa-minus"></i>  <!--Esta línea de código trae el botón Eliminar de Bootstrap-->
+                                    </button>
+                                    <div class="modal fade" id="deleteModal{{item.0}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Eliminar a {{item.1}}</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">Esta seguro de elminar este producto?.</div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                <a class="btn btn-primary" href="/Productos/delete/{{item.0}}">Eliminar</a>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <!--**************************************************************************-->
+
+                                       
+                                </td>                         
+                            </tr>
+                            {%endfor%}    
+     
+                        </tbody>
+                           <!-- ========================================================-->
+                           <!-- FIN CONTENIDO DE LA TABLA -->
+                       </table>
+                   </div>
+               </div>
+               <!-- ========================================================--> 
+               <!-- FIN TÍTULOS DE LA TABLA -->
+               <!-- ========================================================-->
+           </div>
+       </div>
+       <!-- /.container-fluid -->
+
+   </div>
+   <!-- End of Main Content -->
+
+
+   <!-- ========================================================--> 
+   <!-- INICIA PIE DE PÁGINA -->
+   <!-- ========================================================-->
+
+   <!-- Footer -->
+   <footer class="sticky-footer bg-white">
+       <div class="container my-auto">
+           <div class="copyright text-center my-auto">
+               <span>developed by Grupo 7 ©2021 </span>
+           </div>
+       </div>
+   </footer>
+   <!-- End of Footer -->
+
+   <!-- ========================================================-->
+   <!-- FIN PIE DE PÁGINA -->
+   <!-- ========================================================--> 
+</div>
+<!-- End of Content Wrapper -->
+<!-- ========================================================--> 
+<!-- FIN CONTENIDO ENVLVENTE -->
+<!-- ========================================================-->
+
+</div>
+<!-- End of Page Wrapper -->
+<!-- ========================================================--> 
+<!-- FIN PÁGINA ENVLVENTE -->
+<!-- ========================================================-->
+
+
+<!-- ========================================================--> 
+<!-- INICIA MODAL INFORMACIÓN USUARIO -->
+<!-- ========================================================--> 
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">Seleccione "Salir"  para terminar su sesión actual.</div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="{{ url_for('Home') }}">Logout</a>
+        </div>
+    </div>
+    </div>
+</div>
+<!-- ======================================================--> 
+<!-- FIN MODAL INFORMACIÓN USUARIO -->
+<!-- ======================================================-->
+
+<!-- Bootstrap core JavaScript-->
+<script src="static/vendor/jquery/jquery.min.js"></script>
+<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>    
+
+<!-- ==================================================================================--> 
+<!-- PERSONALIZA LOS NIVELES DE INFORMACIÓN QUE SE MUESTRA DE LA PÁGINA (Show / Buscar) -->
+<!-- ==================================================================================--> 
+
+<!-- Custom scripts for all pages-->
+<script src="static/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="static/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+
+
+<!-- Page level custom scripts -->
+<script src="static/js/demo/datatables-demo.js"></script>
+
+
+
 {% endblock %}

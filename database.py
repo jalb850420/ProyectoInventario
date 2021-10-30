@@ -12,6 +12,17 @@ def sql_connection():
     except :
         print ('error')
 
+def sql_consulta_login(nombre, clave):
+    try:
+        strsql = "select * from Usuarios WHERE usuario = '"+nombre+"' and passw = '"+clave+"';" 
+        con = sql_connection()
+        cursorObj = con.cursor()
+        valor = cursorObj.execute(strsql).fetchall()
+        con.close()
+        return valor
+    except Error as err:
+        print(err)
+
 # TIPO DE USUARIO
 def sql_insert_tipousuario(cod, nom):
     try:
@@ -121,7 +132,7 @@ def sql_edit_productos(id):
 	
 def sql_actualizar_producto(idp, nomproducto, marcaproducto, descripproducto, costoproducto, precio, cantidad, idprov, idcategoria, id):
     try:
-        strsql = "update Productos set id_producto = '"+idp+"', nombre = '"+nomproducto+"', marca = "+marcaproducto+", descripcion = "+descripproducto+", costo = '"+costoproducto+"', precio = '"+precio+"', cantidad = '"+cantidad+"', id_proveedores = '"+idprov+"', idCategoria = '"+idcategoria+"' where id_producto = "+id+";"
+        strsql ="update Productos set id_producto = "+idp+", nombre = '"+nomproducto+"', marca = '"+marcaproducto+"', descripcion = '"+descripproducto+"', costo = '"+costoproducto+"', precio = '"+precio+"', cantidad = '"+cantidad+"', id_proveedores = "+idprov+", idCategoria = "+idcategoria+" where id_producto = "+id+";"
         con = sql_connection()
         cursorObj = con.cursor()
         cursorObj.execute(strsql)
