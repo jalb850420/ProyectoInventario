@@ -100,6 +100,17 @@ def sql_edit_usuarios( nombre, mail, perfil, usuario, passw, idtipousuario, id):
 
 def sql_delete_usuarios(id):
     try:
+        strsql = ("delete from Usuarios where id = ?", (id))
+        con = sql_connection()
+        cursorObj = con.cursor()
+        cursorObj.execute(*strsql)
+        con.commit()
+        con.close()
+    except Error as err:
+        print(err)
+""" 
+def sql_delete_usuarios(id):
+    try:
         strsql = "delete from Usuarios where id = "+id+";"
         con = sql_connection()
         cursorObj = con.cursor()
@@ -107,7 +118,7 @@ def sql_delete_usuarios(id):
         con.commit()
         con.close()
     except Error as err:
-        print(err)
+        print(err)"""
 
 # PRODUCTO
 def sql_select_productos():
@@ -216,9 +227,9 @@ def sql_edit_proveedores(id_proveedores, nombre, categoria, ciudad, direccion, t
         print(err)
 	
 
-def sql_delete_proveedores(id_proveedores):
+def sql_delete_proveedor(id_proveedores):
     try:
-        strsql = "delete from Proveedores where id = "+id_proveedores+";"
+        strsql = "delete from Proveedores where id_proveedores = "+id_proveedores+";"
         con = sql_connection()
         cursorObj = con.cursor()
         cursorObj.execute(strsql)

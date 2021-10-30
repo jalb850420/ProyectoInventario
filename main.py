@@ -2,7 +2,7 @@ import os
 from flask import Flask, request, render_template, redirect, url_for, flash
 from flask import g
 
-from database import sql_nuevo_usuario, sql_select_usuarios, sql_select_proveedores, sql_edit_usuarios, sql_nuevo_proveedor
+from database import sql_nuevo_usuario, sql_select_usuarios, sql_select_proveedores, sql_edit_usuarios, sql_nuevo_proveedor, sql_delete_usuarios, sql_delete_proveedor
 from database import sql_insert_tipousuario, sql_select_productos, sql_delete_productos , sql_edit_productos, sql_actualizar_producto, sql_consulta_login, sql_nuevo_producto 
 from forms import  TipoUsuario,Producto, EditProducto
 app = Flask(__name__)
@@ -79,11 +79,16 @@ def mostrar_productos():
    return render_template('productos.html', products=products)
 
 #                 DELETE
-
+@app.route('/Productos/delete/<id>', methods=["GET", "POST"])
+def delete_producto(id=None):
+    sql_delete_productos(id) #llamado a la función de borrado de la base de datos
+    flash('Producto eliminado correctamente')
+    return redirect(url_for('mostrar_productos'))
+"""
 @app.route('/delete/<id>')
 def borrar_producto(id):
    sql_delete_productos(id) #llamado a la función de borrado de la base de datos
-   return redirect(url_for('productos'))
+   return redirect(url_for('productos'))"""
 
 #CRUD OK***************************************************
 #                  USUARIO
@@ -130,7 +135,11 @@ def mostrar_usuario():
    return render_template('usuario.html', User = User)
 
 #                 DELETE
-
+@app.route('/Usuario/delete/<id>', methods=["GET", "POST"])
+def delete_usuario(id=None):
+    sql_delete_usuarios(id) #llamado a la función de borrado de la base de datos
+    flash('Usuario eliminado correctamente')
+    return redirect(url_for('mostrar_usuario'))
 
 
 #CRUD OK***************************************************
@@ -185,6 +194,11 @@ def mostrar_proveedores():
    return render_template('proveedores.html', supplier = supplier)
 
 #                   DELETE
+@app.route('/Proveedores/delete/<id>', methods=["GET", "POST"])
+def delete_proveedor(id=None):
+    sql_delete_proveedor(id) #llamado a la función de borrado de la base de datos
+    flash('Producto eliminado correctamente')
+    return redirect(url_for('mostrar_proveedores'))
 
 #-------------------------------
 #           MY SQL
