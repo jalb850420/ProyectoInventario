@@ -2,7 +2,8 @@ import os
 from flask import Flask, request, render_template, redirect, url_for, flash
 from flask import g
 
-from database import sql_select_usuarios,sql_select_proveedores, sql_insert_tipousuario, sql_select_productos, sql_delete_productos , sql_edit_productos, sql_actualizar_producto, sql_consulta_login
+from database import sql_nuevo_usuario, sql_select_usuarios, sql_select_proveedores, sql_edit_usuarios
+from database import sql_insert_tipousuario, sql_select_productos, sql_delete_productos , sql_edit_productos, sql_actualizar_producto, sql_consulta_login
 from forms import  TipoUsuario,Producto, EditProducto
 app = Flask(__name__)
 #app.secret_key = os.urandom(24)
@@ -77,20 +78,37 @@ def borrar_producto(id):
 #                   NUEVO
 
 @app.route('/Insertar/Usuarios', methods=['GET', 'POST'])
-def nuevousuario():
-   if  request.method == "GET": #Si la ruta es accedida a través del método GET entonces
-	   form = TipoUsuario() #Crea un nuevo formulario de tipo producto
-	   return render_template('nuevo_Tipo_Usuario.html', form=form) #redirecciona vista nuevo html enviando la variable form
-   if request.method == "POST": #Si la ruta es accedida a través del método POST entonces
-      cod = request.form["codigo"] #asigna variable cod con valor enviado desde formulario  en la vista html
-      nom = request.form["nombre"] #asigna variable nom con valor enviado desde formulario en la vista html
-      sql_insert_tipousuario(cod, nom) #llamado de la función para insertar el nuevo producto
+def nuevo_usuario():
+      #Datos de formulario 
+      nombre = request.form['name']   #asigna variable cod con valor enviado desde formulario  en la vista html
+      mail = request.form['email']
+      perfil = request.form['profile']
+      usuario = request.form['user']
+      passw = request.form['password']
+      idtipousuario = request.form['idTipoUser']
+      sql_nuevo_usuario(nombre, mail, perfil, usuario, passw, idtipousuario) #llamado de la función para insertar el nuevo producto
       flash('Dato almacenado con exito!')
-      return redirect(url_for('nuevousuario'))
+      return redirect(url_for('mostrar_usuario'))
 
 
 #                 ACTUALIZAR
+###########################################################
+#-------------Metodo EDITAR de usuario -------------- #
 
+@app.route('/Usuario/update/<id>', methods=['GET', 'POST'])
+def editar_usuario(id):
+    #id = (request.form ['id'])
+    nombre = request.form['name']
+    mail = request.form['email']
+    perfil = request.form['profile']
+    usuario = request.form['user']
+    passw = request.form['password']   
+    idtipousuario =  request.form['idtipousuario']     
+    sql_edit_usuarios(nombre, mail, perfil, usuario, passw, idtipousuario, id) #llamado de la función de edición de la base de datos
+
+    flash('Usuario actualizado correctamente')
+    return redirect(url_for('MostrarUsuarios'))
+#######################################################
 
 #                 MOSTRAR
 @app.route('/MostrarUsuarios', methods=['GET', 'POST']) 
@@ -99,6 +117,9 @@ def mostrar_usuario():
    return render_template('usuario.html', User = User)
 
 #                 DELETE
+
+
+
 #CRUD OK***************************************************
 #                TIPO DE USUARIO
 #CRUD OK***************************************************
@@ -110,9 +131,9 @@ def nuevotipousuario():
 	   form = TipoUsuario() #Crea un nuevo formulario de tipo producto
 	   return render_template('nuevo_Tipo_Usuario.html', form=form) #redirecciona vista nuevo html enviando la variable form
    if request.method == "POST": #Si la ruta es accedida a través del método POST entonces
-      cod = request.form["codigo"] #asigna variable cod con valor enviado desde formulario  en la vista html
+      #cod = request.form["codigo"] #asigna variable cod con valor enviado desde formulario  en la vista html
       nom = request.form["nombre"] #asigna variable nom con valor enviado desde formulario en la vista html
-      sql_insert_tipousuario(cod, nom) #llamado de la función para insertar el nuevo producto
+      sql_insert_tipousuario(nom) #llamado de la función para insertar el nuevo producto
       flash('Dato almacenado con exito!')
       return redirect(url_for('nuevotipousuario'))
 

@@ -152,7 +152,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">   
-                                    <form action="/Usuarios" method="POST">
+                                    <form action="/Insertar/Usuarios" method="POST">
 
                                         <div class="form-group">
                                             Nombre
@@ -178,7 +178,11 @@
                                         <div class="form-group">
                                             Contraseña
                                             <input type="password" name="password" class="form-control" placeholder="*Contraseña (Obligatorio)">
-                                        </div>                                             
+                                        </div>    
+                                        <div class="form-group">
+                                            Id Tipo de Usuario
+                                            <input type="text" name="idTipoUser" class="form-control" placeholder="*Contraseña (Obligatorio)">
+                                        </div>                                           
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                             <button type="submit" class="btn btn-primary">Guardar</button>
@@ -293,19 +297,14 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="/Usuario/update/{{item.0}}" method="POST">
-
+                                                        <form action="/Usuario/update" method="POST">
                                                             <div class="form-group">
                                                                 Nombre
-                                                                <input type="text" name="name" value="{{item.1}}" class="form-control" placeholder="*Nombre (Obligatorio)"><input type="text" name="name" value="{{item.1}}" class="form-control" placeholder="*Nombre (Obligatorio)">
+                                                                <input type="text" name="name" value="{{item.1}}" class="form-control" placeholder="*Nombre (Obligatorio)">
                                                             </div>
                                                             <div class="form-group">
                                                                 Correo electrónico
                                                                 <input type="email" name="email" value="{{item.2}}" class="form-control" placeholder="*Correo electrónico (Obligatorio)">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                Usuario
-                                                                <input type="text" name="user" value="{{item.4}}" class="form-control" placeholder="*Nombre de Usuario (Obligatorio)">
                                                             </div>
                                                             <div class="form-group">
                                                                 Perfil
@@ -317,8 +316,16 @@
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
+                                                                Usuario
+                                                                <input type="text" name="user" value="{{item.4}}" class="form-control" placeholder="*Nombre de Usuario (Obligatorio)">
+                                                            </div>
+                                                            <div class="form-group">
                                                                 Contraseña
                                                                 <input type="password" value="{{item.5}}" name="password" class="form-control" placeholder="*Contraseña (Obligatorio)">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                Id Tipo de Usuario
+                                                                <input type="text" value="{{item.6}}" name="idtipousuario" class="form-control" placeholder="*Contraseña (Obligatorio)">
                                                             </div>                                             
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

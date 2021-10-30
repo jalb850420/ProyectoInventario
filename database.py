@@ -22,11 +22,24 @@ def sql_consulta_login(nombre, clave):
         return valor
     except Error as err:
         print(err)
+# USUARIO
+def sql_nuevo_usuario(nombre, mail, perfil, usuario, passw, idtipousuario):
+    try:
+        strsql = f'insert into Usuarios(nombre, mail, perfil, usuario, passw, idTipo_Usuario) values ("{nombre}","{mail}","{perfil}","{usuario}","{passw}","{idtipousuario}")'
+        con = sql_connection()
+        cursorObj = con.cursor()
+        valor = cursorObj.execute(strsql)
+        con.commit()
+        con.close()
+        return valor
+    except Error as err:
+        print(err)
+
 
 # TIPO DE USUARIO
-def sql_insert_tipousuario(cod, nom):
+def sql_insert_tipousuario(nom):
     try:
-        sql = f'insert into Tipo_Usuario(idTipo_Usuario,nombreTU) values ("{cod}","{nom}")'
+        sql = f'insert into Tipo_Usuario(nombreTU) values ("{nom}")'
         con = sql_connection()
         cursorObj = con.cursor()
         cursorObj.execute(sql)
@@ -73,9 +86,9 @@ def sql_select_usuarios():
         print(err)
 	
 
-def sql_edit_usuarios(id, nombre, mail, perfil, usuario, passw):
+def sql_edit_usuarios(nombre, mail, perfil, usuario, passw, idtipousuario, id):
     try:
-        strsql = "update Usuarios set id = '"+id+"', nombre = '"+nombre+"', mail = "+mail+", perfil = "+perfil+", usuario = "+usuario+", passw = "+passw+" where id = "+id+";"
+        strsql = "update Usuarios set nombre = '"+nombre+"', mail = "+mail+", perfil = "+perfil+", usuario = "+usuario+", passw = "+passw+", idTipo_Usuario = "+idtipousuario+"  where id = "+id+";"
         con = sql_connection()
         cursorObj = con.cursor()
         cursorObj.execute(strsql)
