@@ -86,7 +86,7 @@ def sql_select_usuarios():
         print(err)
 	
 
-def sql_edit_usuarios(nombre, mail, perfil, usuario, passw, idtipousuario, id):
+def sql_edit_usuarios( nombre, mail, perfil, usuario, passw, idtipousuario, id):
     try:
         strsql = "update Usuarios set nombre = '"+nombre+"', mail = "+mail+", perfil = "+perfil+", usuario = "+usuario+", passw = "+passw+", idTipo_Usuario = "+idtipousuario+"  where id = "+id+";"
         con = sql_connection()
@@ -120,8 +120,20 @@ def sql_select_productos():
         return productos
     except Error as err:
         print(err)
-	
-def sql_insert_producto(id_producto, nombre, marca, descripcion, categoria, costo, precio, cantidad):
+
+def sql_nuevo_producto(nombre, marca, descripcion, costo, cantidad, proveedor, categoria):
+    try:
+        sql = f'insert into Productos(nombre, marca, descripcion,  costo, cantidad, id_proveedores, idCategoria) values ("{nombre}","{marca}","{descripcion}","{costo}", "{cantidad}", "{proveedor}", "{categoria}")'
+        con = sql_connection()
+        cursorObj = con.cursor()
+        prod=cursorObj.execute(sql)
+        con.commit()
+        con.close()
+        return prod
+    except Error as err:
+        print(err)
+#***************************************************
+"""def sql_insert_producto(id_producto, nombre, marca, descripcion, categoria, costo, precio, cantidad):
     try:
         sql = f'insert into Productos(id_producto, nombre, marca, descripcion, categoria, costo, precio, cantidad) values ("{id_producto}","{nombre}",{marca},{descripcion},{categoria},{costo},{precio},{cantidad})'
         con = sql_connection()
@@ -130,7 +142,7 @@ def sql_insert_producto(id_producto, nombre, marca, descripcion, categoria, cost
         con.commit()
         con.close()
     except Error as err:
-        print(err)
+        print(err)"""
 
 def sql_edit_productos(id):
     try:
@@ -167,17 +179,15 @@ def sql_delete_productos(id):
         print(err)
 
 # PROVEEDORES
-
-def sql_insert_proveedores(id_proveedores, nombre, categoria, ciudad, direccion, telefono):
+def sql_nuevo_proveedor(nombre, categoria, ciudad, direccion, telefono, idCategoria):
     try:
-        sql = f'insert into Proveedores(id_proveedores, nombre, categoria, ciudad, direccion, telefono) values ('"{id_proveedores}"',"{nombre}","{categoria}","{ciudad}","{direccion}","{telefono}")'
-        #statement = "insert into Proveedores(id_proveedores, nombre, categoria, ciudad, direccion, telefono) values ('?', ?, ?, ?, ?, ?)"
+        strsql = f'insert into Proveedores(nombre, categoria, ciudad, direccion, telefono, idCategoria) values ("{nombre}","{categoria}","{ciudad}","{direccion}","{telefono}","{idCategoria}")'
         con = sql_connection()
         cursorObj = con.cursor()
-        cursorObj.execute(sql)
-        #cursorObj.execute(statement, [id_proveedores , nombre, categoria, ciudad, direccion, telefono])
+        proveedor = cursorObj.execute(strsql)
         con.commit()
         con.close()
+        return proveedor
     except Error as err:
         print(err)
     

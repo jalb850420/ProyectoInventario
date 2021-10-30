@@ -2,8 +2,8 @@ import os
 from flask import Flask, request, render_template, redirect, url_for, flash
 from flask import g
 
-from database import sql_nuevo_usuario, sql_select_usuarios, sql_select_proveedores, sql_edit_usuarios
-from database import sql_insert_tipousuario, sql_select_productos, sql_delete_productos , sql_edit_productos, sql_actualizar_producto, sql_consulta_login
+from database import sql_nuevo_usuario, sql_select_usuarios, sql_select_proveedores, sql_edit_usuarios, sql_nuevo_proveedor
+from database import sql_insert_tipousuario, sql_select_productos, sql_delete_productos , sql_edit_productos, sql_actualizar_producto, sql_consulta_login, sql_nuevo_producto 
 from forms import  TipoUsuario,Producto, EditProducto
 app = Flask(__name__)
 #app.secret_key = os.urandom(24)
@@ -33,7 +33,20 @@ def Inicio():
 #                  PRODUCTO
 #CRUD OK***************************************************
 #                 NUEVO
-
+@app.route('/Insertar/Productos', methods=['GET', 'POST'])
+def nuevo_producto():
+   #Datos de formulario 
+   nombre = request.form['name']   #asigna variable cod con valor enviado desde formulario  en la vista html
+   marca = request.form['marca']
+   descripcion = request.form['descripcion']
+   costo = request.form['costo']
+   cantidad = request.form['cantidad']
+   proveedor = request.form['proveedor']
+   categoria = request.form['categoria']
+   print("hola", nombre, marca, descripcion, cantidad, costo, proveedor, categoria)
+   sql_nuevo_producto(nombre, marca, descripcion, cantidad, costo, proveedor, categoria) #llamado de la función para insertar el nuevo producto
+   flash('Dato almacenado con exito!')
+   return redirect(url_for('mostrar_productos'))
 
 
 #                 ACTUALIZAR
@@ -150,7 +163,18 @@ def nuevotipousuario():
 #                  PROVEEDORES
 #CRUD OK***************************************************
 #                   NUEVO
-
+@app.route('/Insertar/Proveedores', methods=['GET', 'POST'])
+def nuevo_proveedor():
+      #Datos de formulario 
+      nombre = request.form['name']   #asigna variable cod con valor enviado desde formulario  en la vista html
+      categoria = request.form['category']
+      ciudad = request.form['city']
+      direccion = request.form['address']
+      telefono = request.form['phone']
+      idCategoria = request.form['idCategoria']
+      sql_nuevo_proveedor(nombre, categoria, ciudad, direccion, telefono, idCategoria) #llamado de la función para insertar el nuevo producto
+      flash('Dato almacenado con exito!')
+      return redirect(url_for('mostrar_proveedores'))
 #                 ACTUALIZAR
 
 

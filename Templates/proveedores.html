@@ -148,7 +148,7 @@
                                    </button>
                                </div>
                                <div class="modal-body">  
-                                <form action="/Proveedores" method="POST">    <!--LLama a la ruta para enviar datos al servidor-->                       
+                                <form action="/Insertar/Proveedores" method="POST">    <!--LLama a la ruta para enviar datos al servidor-->                       
                                    <div class="form-group">
                                        Nombre Proveedor
                                        <input type="text" name="name" class="form-control" placeholder="*Nombre proveedor(Obligatorio)">                                                                       
@@ -178,7 +178,11 @@
                                    <div class="form-group">
                                        Teléfono/Celular
                                        <input type="text" name="phone" class="form-control" placeholder="*Teléfono/Celular(Obligatorio)">                                       
-                                   </div>                                                                           
+                                   </div>           
+                                   <div class="form-group">
+                                    Id Categoria
+                                    <input type="text" name="idCategoria" class="form-control" placeholder="*Id Categoria(Obligatorio)">
+                                   </div>                                                                
                                    <div class="modal-footer">
                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                        <button type="submit" class="btn btn-primary">Guardar</button>
