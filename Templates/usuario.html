@@ -6,10 +6,10 @@
         <a href="#" class="logo">HOTAI MOTOR</a>
         <nav class="navigation">
             <ul>
-                <li><a href="{{ url_for('Inicio') }}">Inicio</a></li>
-                <li><a href="{{ url_for('Usuario') }}">Usuario</a></li>
-                <li><a href="{{ url_for('Productos') }}">Productos</a></li>
-                <li><a href="{{ url_for('Proveedores') }}">Proveedores</a></li>
+
+                <li><a href="{{ url_for('mostrar_usuario') }}">Usuario</a></li>
+                <li><a href="{{ url_for('mostrar_productos') }}">Productos</a></li>
+                <li><a href="{{ url_for('mostrar_proveedores') }}">Proveedores</a></li>
                 <!---<li><a href="#">Salir</a></li>-->
             </ul>
         </nav>
@@ -260,7 +260,7 @@
                                 <!--Llamado a la Base de datos de acuerdo a las posiciones-->
                                 <!--********************************************************-->
 
-                                {% for item in user %}
+                                {% for item in User %}
                                 <tr>
                                     <td>{{item.0}}</td> <!--Id. de usuario en la posicion 0 --->                                          
                                     <td>{{item.1}}</td> <!--Nombre. de usuario en la posicion 1 --->                                                 
@@ -273,7 +273,7 @@
                                     {% else %} 
                                         <td>Usuario final</td> <!--Rol. de usuariao en la posicion 3 --->   
                                     {% endif %}   
-                                    <td>                                        
+                                    <td>                                   
                                     <!--*****************************************************************-->      
                                     
                                                                            

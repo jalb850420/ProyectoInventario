@@ -67,8 +67,8 @@ def sql_select_usuarios():
         con = sql_connection()
         cursorObj = con.cursor()
         cursorObj.execute(strsql)
-        productos = cursorObj.fetchall()
-        return productos
+        usuarios = cursorObj.fetchall()
+        return usuarios
     except Error as err:
         print(err)
 	
@@ -175,8 +175,8 @@ def sql_select_proveedores():
         con = sql_connection()
         cursorObj = con.cursor()
         cursorObj.execute(strsql)
-        productos = cursorObj.fetchall()
-        return productos
+        proveedores = cursorObj.fetchall()
+        return proveedores
     except Error as err:
         print(err)
 	
